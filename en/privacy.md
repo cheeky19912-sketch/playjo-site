@@ -23,6 +23,7 @@ This policy covers the Play Jo app on iOS and Android, the website **playjo.app*
 ## 3. Data we collect
 
 ### a) Data you provide
+
 | Data | Required? | Purpose |
 |---|---|---|
 | Jordanian mobile number | Yes | Account creation, login via one-time code (OTP), booking communication |
@@ -71,6 +72,7 @@ We process your data on one or more of the following bases under the PDPL:
 We do not sell your personal data, and we do not make solely automated decisions that significantly affect you.
 
 ## 6. Who we share data with
+
 | Recipient | What they see | Why |
 |---|---|---|
 | **Court owner** | Your name, booking reference, time slot, payment status | Preparing the court and receiving you |
@@ -94,6 +96,7 @@ All service providers are contractually bound to protect your data and use it on
 Your data may be stored on our providers' servers outside Jordan (e.g., Supabase servers). Such transfers are made under the conditions set by the PDPL and its implementing regulations and instructions, and we select providers that apply adequate protection.
 
 ## 9. Retention
+
 | Data | Period |
 |---|---|
 | Account data | While your account is active; deleted within 30 days of an account deletion request |
