@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'ar' }}" dir="{{ page.dir | default: 'rtl' }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ page.title }} | Play Jo</title>
+<link rel="stylesheet" href="{{ '/site.css' | relative_url }}">
+</head>
+<body>
+<header><div class="bar"><a class="logo" href="{{ '/' | relative_url }}">PLAY<span>JO</span></a><a class="lang" href="{{ page.other | relative_url }}">{{ page.other_label }}</a></div></header>
+<main>
+{{ content }}
+</main>
+<footer>Play Jo · شركة العابد · الدوار السابع، عمّان، الأردن · <a href="mailto:info@playjo.app">info@playjo.app</a></footer>
+</body>
+</html>
