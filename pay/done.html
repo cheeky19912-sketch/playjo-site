@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Play Jo - تم</title>
+<style>body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Tahoma,sans-serif;background:#0b1220;color:#e8eefc;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:16px}a{color:#00e5ff;font-weight:bold}</style>
+</head>
+<body>
+<div>
+  <h2>Play Jo</h2>
+  <p>رجعناك للتطبيق عشان نأكد الدفعة…</p>
+  <p><a id="back" href="playjo://pay-done">ارجع للتطبيق</a></p>
+</div>
+<script>
+  var url = 'playjo://pay-done' + location.search;
+  document.getElementById('back').href = url;
+  location.href = url;
+</script>
+</body>
+</html>
