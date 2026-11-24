@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Play Jo - الدفع</title>
+<style>
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Tahoma,sans-serif;background:#0b1220;color:#e8eefc;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:16px}
+.box{max-width:420px}.spin{width:36px;height:36px;border:4px solid #1f2b44;border-top-color:#00e5ff;border-radius:50%;animation:s 1s linear infinite;margin:16px auto}
+@keyframes s{to{transform:rotate(360deg)}}.err{color:#ff8a8a}
+</style>
+</head>
+<body>
+<div class="box">
+  <h2>Play Jo</h2>
+  <div class="spin" id="spin"></div>
+  <p id="msg">جاري فتح صفحة الدفع الآمنة…</p>
+</div>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var session = q.get('s'), host = q.get('h');
+  var msg = document.getElementById('msg');
+  function fail(t) { document.getElementById('spin').style.display = 'none'; msg.className = 'err'; msg.textContent = t; }
+  // بنسمح بس ببوابات Mastercard الرسمية
+  if (!session || !host || !/^https:\/\/[a-z0-9-]+\.gateway\.mastercard\.com$/.test(host)) return fail('رابط الدفع مش صحيح. ارجع للتطبيق وجرّب مرة ثانية.');
+  var s = document.createElement('script');
+  s.src = host + '/static/checkout/checkout.min.js';
+  s.setAttribute('data-error', 'pjError');
+  s.setAttribute('data-cancel', 'pjCancel');
+  window.pjError = function () { fail('صار خطأ بالدفع. ارجع للتطبيق وجرّب مرة ثانية.'); };
+  window.pjCancel = function () { location.href = 'playjo://pay-done?cancel=1'; };
+  s.onload = function () {
+    try {
+      Checkout.configure({ session: { id: session } });
+      Checkout.showPaymentPage();
+    } catch (e) { fail('ما قدرنا نفتح صفحة الدفع.'); }
+  };
+  s.onerror = function () { fail('ما قدرنا نوصل لبوابة الدفع.'); };
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
